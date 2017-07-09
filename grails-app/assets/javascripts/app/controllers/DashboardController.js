@@ -1,4 +1,5 @@
-app.controller('DashboardController', ["$scope", "$http", "UserService", "$rootScope","ToDoService", function ($scope, $http, UserService, $rootScope,ToDoService) {
+app.controller('DashboardController', ["$scope", "$http", "UserService", "$rootScope","ToDoService", function ($scope,UserService, $rootScope,
+                                                                                                               ToDoService) {
 
 
     $scope.userEmail = UserService.getEmail();
@@ -8,6 +9,19 @@ app.controller('DashboardController', ["$scope", "$http", "UserService", "$rootS
     $scope.read= false;
 
     $scope.init = function () {
+
+        ToDoService.getLoggedInEmail.GET({}, function (r) {
+
+        console.log(r);
+
+
+            UserService.setEmail(r.email);
+            $scope.userEmail = UserService.getEmail();
+            $scope.userEmail = r.email;
+
+    });
+
+
         if ($scope.userEmail) {
             $scope.getAllTodos();
         }

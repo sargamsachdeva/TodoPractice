@@ -70,5 +70,8 @@ class UserController {
 
         render(view:'dashboard')
     }
+    def getLoggedInEmail(){
 
+        render([email: getAuthenticatedUser().username?: 'null' ] as JSON)  //email h username ki jgh?
+    }
 }

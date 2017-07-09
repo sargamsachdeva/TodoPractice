@@ -15,7 +15,7 @@ app.controller('LoginController', ["$scope", "$http", "UserService", "$location"
            $scope.loggedInEmail = response.email;
            $scope.loggedInPassword = response.password;
        });
-    };
+    };// iska ui kaha h?
 
     $scope.logout = function () {
        /* if(!$rootScope.loggedInEmail){
